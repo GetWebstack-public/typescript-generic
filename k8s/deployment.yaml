@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: typescript-generic
+  namespace: typescript-generic
+  labels:
+    app: typescript-generic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: typescript-generic
+  template:
+    metadata:
+      labels:
+        app: typescript-generic
+    spec:
+      containers:
+      - name: typescript-generic
+        image: typescript-generic
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
+      restartPolicy: Always
